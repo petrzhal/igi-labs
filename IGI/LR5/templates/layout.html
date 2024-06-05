@@ -1,0 +1,60 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}  {% endblock %}</title>
+
+</head>
+<body>
+    <header style="padding: 1rem; background-color: #f2f2f2; display: flex; justify-content: space-between; align-items: center;">
+        <span class="name" style="font-size: 24px;">Museum</span>
+        <nav>
+            <ul style="list-style-type: none; margin: 0; padding: 0; display: flex;">
+                <li style="margin-right: 1rem;"><a href="{% url 'home' %}">Home</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'museum' %}">Museum</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'exhibitions' %}">Exhibitions</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'about' %}">About us</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'news' %}">News</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'contacts' %}">Contacts</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'dictionary' %}">Questions</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'policy' %}">Privacy Policy</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'vacancies' %}">Vacancies</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'reviews' %}">Reviews</a></li>
+                <li style="margin-right: 1rem;"><a href="{% url 'discounts' %}">Promotional codes and coupons</a></li>
+                {% if user.is_staff %}
+                    <li style="margin-right: 1rem;"><a href="{% url 'employee_positions' %}">Employee positions</a></li>
+                    <li style="margin-right: 1rem;"><a href="{% url 'employees' %}">Employees</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <li style="margin-right: 1rem;"><a href="{% url 'clients' %}">Clients</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div>
+            {% if user.is_authenticated %}
+                {% if not user.is_superuser %}
+                    {% if user.is_staff %}
+                        <a href="{% url 'employee_profile' %}">Profile</a>
+                    {% else %}
+                        <a href="{% url 'client_profile' %}">Profile</a>
+                    {% endif %}
+                {% endif %}
+                <a href="{% url 'logout' %}">Log out</a>
+            {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                <span> | </span>
+                <a href="{% url 'register' %}">Sign up</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main style="padding: 2rem;">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

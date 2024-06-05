@@ -1,0 +1,12 @@
+Total sentences: 6
+Narrative sentences: 2
+Interrogative sentences: 3
+Imperative sentences: 1
+Average sentence length: 6.33 words
+Average word length: 4.10 characters
+Smiley count: 4
+Date list: ['12-05-2005', '13-05-2005']
+Words with vowel-consonant pattern: ['is', 'tomorrow', 'is', 'delicious', 'is', 'Let', 'is', 'good', 'sefddffsef']
+Lowercase letters count: 142
+Last word with 'i': is, index: 182
+Today 12 05 2005 and tomorrow 13 05 2005 Some words like apple and banana are delicious The last word with Mississippi Let s exclude words starting with Today a good day assafa sefddffsef

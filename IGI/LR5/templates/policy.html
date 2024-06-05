@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% if random_gif_url %}
+        <div class="random-gif" style="margin-top: 20px;">
+            <h2>Random GIF:</h2>
+            <img src="{{ random_gif_url }}" alt="Random GIF" width="200"/>
+        </div>
+    {% endif %}
+{% endblock %}
